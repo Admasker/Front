@@ -10,5 +10,5 @@ const studio = window.location.pathname === "/studio" || window.location.pathnam
 const path = window.location.pathname.replace(/\/$/, "");
 const view = ["/campaigns", "/creators", "/workspace"].includes(path) ? path.slice(1) as "campaigns" | "creators" | "workspace" : null;
 if (studio) document.title = "Admasker Studio — 장면을 지키는 PPL";
-else if (view) document.title = `${view === "campaigns" ? "캠페인 찾기" : view === "creators" ? "크리에이터 찾기" : "내 워크스페이스"} — Admasker`;
+else if (view) document.title = `${view === "campaigns" ? "PPL 광고 캠페인" : view === "creators" ? "AI 크리에이터" : "내 워크스페이스"} — Admasker`;
 ReactDOM.createRoot(document.getElementById("root")!).render(<React.StrictMode>{studio ? <Studio /> : view ? <Marketplace view={view} /> : <Landing />}</React.StrictMode>);

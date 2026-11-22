@@ -1,6 +1,6 @@
 # Front
 
-Admasker의 **브랜드 × 크리에이터 매칭 서비스** 프론트엔드입니다. React + TypeScript + Vite로 작성했고, API와 영상 AI는 별도 저장소로 분리했습니다.
+Admasker의 **AI 영상 제품 PPL 광고 플랫폼** 프론트엔드입니다. React + TypeScript + Vite로 작성했고, API와 영상 AI는 별도 저장소로 분리했습니다.
 
 - [Back](https://github.com/Admasker/Back): 회원·프로필·캠페인·지원/선정·영상 프로젝트 API
 - [Aicore](https://github.com/Admasker/Aicore): 비공개 영상 AI 재생성 서버
@@ -9,7 +9,7 @@ Admasker의 **브랜드 × 크리에이터 매칭 서비스** 프론트엔드입
 
 | 경로 | 기능 |
 |---|---|
-| `/` | 브랜드·크리에이터용 랜딩, 캠페인 소개, PPL 스튜디오 안내 |
+| `/` | 광고주·AI 크리에이터용 랜딩, 원본/PPL 비교, 장면 예시·제품 광고 캠페인 |
 | `/campaigns` | 검색·카테고리·플랫폼 필터, 상세, 광고주 캠페인 등록, 크리에이터 지원 |
 | `/creators` | 공개 프로필 탐색과 채널 링크 |
 | `/workspace` | 광고주: 캠페인/지원자 관리와 선정, 크리에이터: 프로필과 지원 상태 |
@@ -63,14 +63,14 @@ docker run --rm -p 8080:80 \
 
 ```text
 src/
-  components/Landing.tsx      검색 중심의 서비스 랜딩
+  components/Landing.tsx      AI 영상 제품 PPL 중심의 랜딩
   components/Marketplace.tsx  캠페인·프로필·계정·워크스페이스
   components/Studio.tsx       영상 PPL 배치·작업 UI
   components/Brand.tsx        Admasker 브랜드
   lib/api.ts                 모든 HTTP 호출
   shared/types.ts            API 응답 타입과 배치값
   styles.css                 기본·스튜디오 스타일
-  marketplace.css            매칭 서비스 스타일
+  marketplace.css            광고 캠페인·워크스페이스 스타일
   landing.css                랜딩 전용 밝은 테마
   main.tsx                   경로 진입점
 public/                      이미지·폰트
@@ -80,7 +80,7 @@ API 인터페이스는 `src/lib/api.ts`, 타입은 `src/shared/types.ts`, 서버
 
 ## 현재 범위
 
-- 매칭은 분야·플랫폼 탐색 → 지원 → 광고주 검토·선정 방식입니다. 자동 추천 모델·계약·결제·메시징은 포함하지 않습니다.
+- 제품 광고 캠페인은 분야·플랫폼 탐색 → 영상 PPL 제안 → 광고주 검토·선정 방식입니다. 자동 추천 모델·계약·결제·메시징은 포함하지 않습니다.
 - 영상 PPL의 핵심 방향은 원본 스토리와 화면을 지키고 제품 주변만 재생성하는 것입니다. 배치 시안과 AI 결과는 별도로 표시하며, GPU 미연결 시 재생성을 활성화하지 않습니다.
 - 실제 GPU 추론 및 제품·로고의 자연스러운 재현 품질은 아직 검증하지 않았습니다.
 
@@ -92,6 +92,6 @@ API 인터페이스는 `src/lib/api.ts`, 타입은 `src/shared/types.ts`, 서버
 
 ## 랜딩 디자인 참고
 
-[Collabstr](https://collabstr.com/)의 검색·플랫폼 선택과 [리뷰노트](https://www.reviewnote.co.kr/)의 캠페인 탐색 구성을 참고해, Admasker 브랜드에 맞게 새로 구성했습니다. 적용 범위와 데이터 표시는 [랜딩 참고 기록](docs/landing-references.md)에 정리했습니다.
+광고주는 “수많은 AI 영상에 여러분의 제품을 광고하세요”, AI 크리에이터는 “여러분의 영상에 PPL을 추가하세요”라는 관점으로 구성했습니다. 첫 화면에서 제품 PPL 전후 시안을 비교하고 광고 등록 또는 영상 업로드로 진입합니다. 인플루언서 서비스 참고는 캠페인 카드의 정보 구조에 한정합니다. 적용 범위와 데이터 표시는 [랜딩 참고 기록](docs/landing-references.md)에 정리했습니다.
 
 첫 화면에서 광고주/크리에이터 역할을 선택하고 플랫폼·키워드로 검색할 수 있습니다. 검색어·플랫폼·카테고리는 목록 URL에 전달되어 초기 필터에 반영됩니다. 예시 프로필과 실제 API 프로필은 사진·표시를 구분하고, API 미연결 상태도 숨기지 않습니다.

@@ -1,767 +1,309 @@
-.landing-v2 {
-  --lv-ink: #19271e;
-  --lv-muted: #697369;
-  --lv-lime: #d5f26f;
-  --lv-line: #e4e9e2;
-  --lv-green: #3c602d;
-  color: var(--lv-ink);
-  background: #fff;
-  color-scheme: light;
-  min-height: 100vh;
-  overflow: clip;
-  font-size: 16px;
-  line-height: 1.7;
-}
-.landing-v2 :focus-visible { outline: 3px solid #49712c; outline-offset: 4px; }
-.landing-v2 button { color: inherit; }
-.landing-v2 button:disabled { opacity: .5; }
-.landing-v2 img { max-width: 100%; }
-.landing-v2 h1,.landing-v2 h2,.landing-v2 h3 { color: var(--lv-ink); word-break: keep-all; }
-.landing-v2 .brand { color: #1d2a20; font-size: 29px; gap: 9px; letter-spacing: -1.3px; }
-.landing-v2 .brand-symbol { width: 33px; height: 33px; border-radius: 8px; background: #d6f36f; }
-.landing-v2 .brand-period { color: #78982d; }
-.lv-container { width: min(1240px, calc(100% - 96px)); margin-inline: auto; }
-.lv-header { border-bottom: 1px solid #edf0ea; background: #fffffff5; position: relative; z-index: 20; }
-.lv-header-inner { display: flex; align-items: center; gap: 35px; min-height: 88px; }
-.lv-header nav { display: flex; align-items: center; gap: 29px; margin-left: 30px; font-size: 14px; font-weight: 500; color: #3c473d; }
-.lv-header nav>a { white-space: nowrap; }
-.lv-header nav>a:hover { color: #52772d; }
-.lv-header nav>a>span { font-size: 10px; color: #4f6d2d; background: #ecf5db; padding: 2px 5px; border-radius: 4px; margin-left: 4px; vertical-align: 2px; }
-.lv-header-actions { margin-left: auto; display: flex; align-items: center; gap: 22px; }
-.lv-login { font-size: 14px; color: #465043; white-space: nowrap; }
-.lv-button { display: inline-flex; justify-content: center; align-items: center; gap: 9px; min-height: 47px; padding: 0 21px; border-radius: 7px; font-size: 14px; font-weight: 650; line-height: 1.3; white-space: nowrap; transition: transform .2s, background .2s; border: 1px solid transparent; }
-.lv-button:hover { transform: translateY(-2px); }
-.lv-button-dark { background: #233326; color: #fff; border-color: #233326; }
-.lv-button-dark:hover { background: #354b2d; }
-.lv-button-lime { background: var(--lv-lime); color: #24331d; border-color: var(--lv-lime); }
-.lv-button-lime:hover { background: #e3fa92; }
-.lv-button-white { background: #fff; color: #24331d; border-color: #fff; }
-.lv-header-cta { min-height: 39px; font-size: 13px; padding-inline: 15px; }
-.lv-menu { display: none; padding: 5px; align-items: center; justify-content: center; }
-.lv-mobile-nav { display: none; }
-.lv-kicker { display: block; color: #5d763a; font-size: 12px; font-weight: 650; letter-spacing: .09em; line-height: 1.5; }
-.lv-hero { background: linear-gradient(118deg,#f9fbf5,#f3f7ed 68%,#edf4e8); padding: 56px 0 58px; }
-.lv-hero-grid { display: grid; grid-template-columns: 1.12fr 1fr; align-items: center; gap: 55px; }
-.lv-audience-switch { display: inline-flex; border: 1px solid #dfe6d7; background: #e9eee2; border-radius: 7px; padding: 4px; gap: 2px; margin-bottom: 27px; }
-.lv-audience-switch>button { padding: 7px 15px; font-size: 13px; color: #79816e; font-weight: 500; border-radius: 4px; }
-.lv-audience-switch>button.active { color: #2d4024; background: #fff; box-shadow: 0 2px 5px #243c0a0b; font-weight: 650; }
-.lv-hero-kicker { font-size: 10px; letter-spacing: .08em; color: #69804a; margin-bottom: 15px; }
-.lv-hero h1 { font-size: clamp(42px,4.2vw,60px); font-weight: 700; line-height: 1.22; letter-spacing: -.06em; margin: 0 0 23px; }
-.lv-hero h1>span { position: relative; z-index: 0; }
-.lv-hero h1>span:after { content: ''; display: block; position: absolute; bottom: 5px; left: -2px; right: -3px; height: 15px; z-index: -1; background: #d5f26f99; transform: rotate(-1deg); }
-.lv-hero-description { font-size: 16px; line-height: 1.9; color: #697660; letter-spacing: -.02em; margin-bottom: 29px; }
-.lv-search-form { width: 100%; display: flex; align-items: center; gap: 0; background: #fff; border: 1px solid #d3ddc8; padding: 9px; border-radius: 9px; box-shadow: 0 8px 23px #243b1910; min-height: 75px; }
-.lv-search-platform { display: flex; flex-direction: column; position: relative; padding: 0 21px 0 10px; min-width: 135px; border-right: 1px solid #e5eadf; }
-.lv-search-platform>span { font-size: 11px; color: #8c9582; line-height: 1.5; }
-.lv-search-platform>select { font-size: 14px; font-weight: 550; color: #38482e; background: transparent; border: none; appearance: none; padding: 2px 13px 2px 0; height: 28px; cursor: pointer; }
-.lv-search-platform>svg { position: absolute; bottom: 8px; right: 13px; color: #748867; pointer-events: none; }
-.lv-search-input { flex: 1; padding: 0 13px; min-width: 0; }
-.lv-search-input>input { width: 100%; border: 0; padding: 10px 0; background: transparent; color: #263823; min-width: 0; font-size: 14px; }
-.lv-search-input>input::placeholder { color: #9aa391; }
-.lv-search-submit { display: flex; justify-content: center; align-items: center; width: 51px; height: 51px; flex-shrink: 0; border: 1px solid #263b24; background: #263b24; color: white!important; border-radius: 6px; transition: background .2s; }
-.lv-search-submit:hover { background: #416135; }
-.lv-popular-search { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin-top: 15px; }
-.lv-popular-search>span { font-size: 12px; color: #7d8b6f; margin-right: 2px; }
-.lv-popular-search>a { font-size: 12px; color: #748363; background: #e8efdf; border: 1px solid #dce7ce; padding: 3px 8px; border-radius: 4px; }
-.lv-popular-search>a:hover { background: #d9e9bd; color: #3b5328; }
-.lv-hero-bottom { margin-top: 27px; }
-.lv-hero-secondary { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; color: #395329; }
-.lv-hero-bottom>span { display: block; color: #9aa18e; font-size: 12px; margin-top: 6px; }
-.lv-plus { font-size: 21px; line-height: 1; font-weight: 350; flex-shrink: 0; }
-.lv-photo-stage { width: 100%; height: 465px; position: relative; }
-.lv-orbit { border: 1px solid #b7cca06e; position: absolute; border-radius: 50%; width: 96%; height: 75%; top: 15%; left: 0; transform: rotate(-22deg); }
-.lv-orbit-b { transform: rotate(29deg); width: 84%; height: 80%; left: 9%; }
-.lv-photo-card { overflow: hidden; position: absolute; border: 6px solid #fff; border-radius: 13px; box-shadow: 0 12px 35px #2d431d1c; }
-.lv-photo-card>img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; filter: saturate(.8); }
-.lv-photo-card:after { content: ''; display: block; position: absolute; inset: 60% 0 0; background: linear-gradient(0deg,#0d2015a6,transparent); pointer-events: none; }
-.lv-photo-card>span { display: flex; align-items: center; gap: 6px; position: absolute; bottom: 13px; left: 12px; z-index: 1; color: #fff; font-size: 10px; letter-spacing: .05em; font-weight: 550; }
-.lv-photo-one { left: 1%; top: 22px; width: 43%; height: 290px; transform: rotate(-8deg); z-index: 2; }
-.lv-photo-two { right: 2%; top: 0; width: 43%; height: 242px; transform: rotate(6deg); }
-.lv-photo-three { right: 8%; bottom: 0; width: 42%; height: 249px; transform: rotate(8deg); z-index: 3; }
-.lv-connection-note { display: flex; align-items: center; gap: 13px; position: absolute; bottom: 65px; left: 0; padding: 15px 19px 15px 14px; background: #fff; border: 1px solid #e0e8d7; border-radius: 10px; z-index: 4; box-shadow: 0 14px 40px #3c54201c; transform: rotate(-4deg); }
-.lv-connection-note>span { display: grid; place-items: center; width: 43px; height: 43px; border-radius: 50%; background: #e9f2d8; color: #66803c; }
-.lv-connection-note strong { font-size: 13px; color: #39492d; font-weight: 600; display: block; }
-.lv-connection-note small { font-size: 11px; color: #8e9c7c; display: block; margin-top: 3px; }
-.lv-floating-spark { position: absolute; bottom: 31px; left: 28%; color: #7b9b32; transform: rotate(15deg); }
-.lv-content-sticker { position: absolute; left: 40%; top: -7px; color: #56723a; font-size: 11px; font-family: Arial,sans-serif; font-weight: 700; line-height: 1.1; transform: rotate(-11deg); }
-.lv-content-sticker>em { font-family: Georgia,serif; font-size: 30px; letter-spacing: -.05em; }
-.lv-photo-disclosure { font-size: 12px; text-align: center; line-height: 1.6; color: #96a285; margin-top: 28px; }
-.lv-platform-strip { border-bottom: 1px solid var(--lv-line); background: #fff; }
-.lv-platform-strip>.lv-container { display: flex; align-items: center; gap: 60px; min-height: 112px; }
-.lv-platform-strip>.lv-container>span { font-size: 13px; color: #8b9385; line-height: 1.7; white-space: nowrap; }
-.lv-platform-strip strong { color: #526149; font-size: 15px; font-weight: 550; }
-.lv-platform-strip>.lv-container>div { display: flex; gap: 39px; align-items: center; }
-.lv-platform-strip>.lv-container>div>span { display: flex; align-items: center; gap: 10px; color: #66725d; font-size: 18px; font-weight: 550; letter-spacing: -.03em; white-space: nowrap; }
-.lv-platform-strip>.lv-container>small { font-size: 12px; color: #9ba391; margin-left: auto; max-width: 180px; line-height: 1.8; }
-.lv-section { padding: 77px 0; }
-.lv-section-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 31px; }
-.lv-section-head h2 { font-size: 34px; line-height: 1.35; font-weight: 650; letter-spacing: -.045em; margin: 11px 0; }
-.lv-section-head p { font-size: 15px; color: #818a7a; line-height: 1.8; }
-.lv-link { display: inline-flex; align-items: center; gap: 13px; font-size: 14px; color: #4d6540; font-weight: 600; white-space: nowrap; }
-.lv-link:hover { color: #243d1b; }
-.lv-section-head>.lv-link { padding-bottom: 6px; }
-.lv-example-note { display: block; color: #8b9482; font-size: 12px; line-height: 1.85; margin-bottom: 19px; }
-.lv-mobile-break { display: none; }
-.lv-creator-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 23px; }
-.lv-creator-card { min-width: 0; display: block; border: 1px solid #e4e9df; border-radius: 9px; overflow: hidden; transition: transform .2s,box-shadow .2s; background: #fff; }
-.lv-creator-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px #344c1510; }
-.lv-creator-image { height: 252px; overflow: hidden; position: relative; background: #ebf0e4; }
-.lv-creator-image>img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; filter: saturate(.8); transition: transform .4s; }
-.lv-creator-card:hover .lv-creator-image>img { transform: scale(1.025); }
-.lv-image-chip { position: absolute; top: 12px; left: 12px; padding: 3px 7px; font-size: 10px; font-weight: 500; color: #67735b; background: #fffffff2; border: 1px solid #e1e7dc; border-radius: 4px; }
-.lv-platform-chip { position: absolute; bottom: 12px; left: 12px; display: flex; align-items: center; gap: 5px; padding: 4px 7px; color: #fff; background: #142619bf; backdrop-filter: blur(4px); border: 1px solid #ffffff20; font-size: 10px; font-weight: 500; border-radius: 4px; }
-.lv-platform-chip>svg { width: 13px; height: 13px; }
-.lv-creator-body { padding: 19px 18px 17px; }
-.lv-profile-category { display: block; font-size: 11px; color: #72934c; margin-bottom: 7px; }
-.lv-creator-body h3 { font-size: 20px; font-weight: 600; letter-spacing: -.04em; line-height: 1.45; min-height: 58px; overflow-wrap: anywhere; }
-.lv-creator-body>p { font-size: 12px; color: #9a9f92; margin: 10px 0 18px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
-.lv-card-action { display: flex; align-items: center; justify-content: space-between; gap: 8px; border-top: 1px solid #e8ece3; padding-top: 13px; color: #768667; font-size: 12px; font-weight: 500; }
-.lv-real-profile { display: grid; place-items: center; background: radial-gradient(ellipse at 50% 35%,#e9f3d2,#dce7c9); }
-.lv-profile-letter { width: 95px; height: 95px; border: 1px solid #bbcda0; background: #d1e0b8; border-radius: 50%; display: grid; place-items: center; color: #5a7442; font-size: 43px; }
-.lv-campaign-section { background: #f7f9f4; border-block: 1px solid #ecf0e5; }
-.lv-category-tabs { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; margin: 26px 0 21px; }
-.lv-category-tabs>button { font-size: 13px; color: #849076; font-weight: 500; padding: 7px 16px; border: 1px solid #dfe6d7; border-radius: 5px; background: #fff; transition: background .2s; }
-.lv-category-tabs>button:hover { border-color: #a9be82; color: #506d34; }
-.lv-category-tabs>button.active { background: #2c4228; color: #fff; border-color: #2c4228; }
-.lv-campaign-note { display: flex; justify-content: space-between; gap: 18px; align-items: center; margin-bottom: 20px; }
-.lv-campaign-note>button { color: #54703c; font-size: 12px; text-decoration: underline; white-space: nowrap; padding: 0; }
-.lv-campaign-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 25px; }
-.lv-campaign-card { display: block; background: #fff; border: 1px solid #e1e8d9; border-radius: 8px; overflow: hidden; min-width: 0; transition: transform .2s,box-shadow .2s; }
-.lv-campaign-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px #2d441712; }
-.lv-campaign-image { height: 225px; position: relative; overflow: hidden; background: #d5e2cf; }
-.lv-campaign-coffee { background: radial-gradient(ellipse at 65% 40%,#a5bc96,#c5d8af); }
-.lv-campaign-product { position: absolute; bottom: -16px; right: 15%; height: 215px; transform: rotate(15deg); filter: drop-shadow(0 12px 10px #263c252b); }
-.lv-coffee-title { position: absolute; top: 84px; left: 28px; font-family: Georgia,serif; color: #3f6144; font-size: 21px; line-height: 1.2; }
-.lv-coffee-title>em { font-size: 37px; letter-spacing: -.05em; }
-.lv-campaign-photo { width: 100%; height: 100%; object-fit: cover; filter: saturate(.6) brightness(.8); }
-.lv-fashion-title { position: absolute; top: 80px; left: 27px; color: #fff; font-family: Arial,sans-serif; font-size: 26px; font-weight: 600; letter-spacing: .05em; line-height: 1.4; }
-.lv-fashion-title>em { font-family: Georgia,serif; font-size: 23px; letter-spacing: -.03em; font-weight: 400; }
-.lv-campaign-status { position: absolute; top: 14px; left: 14px; background: #d9f58d; padding: 4px 8px; color: #385126; border: 1px solid #c9e27f; border-radius: 4px; font-size: 11px; font-weight: 600; }
-.lv-campaign-status.is-example { background: #ffffffeb; color: #768367; border-color: #d9e0cf; }
-.lv-story-mark { position: absolute; inset: 0; margin: auto; width: 75px; height: 75px; display: grid; place-items: center; color: #e3f5c6; border: 1px solid #eff9df73; background: #0f231d61; border-radius: 50%; }
-.lv-campaign-body { padding: 22px; }
-.lv-campaign-brand { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 550; color: #727c69; }
-.lv-campaign-brand>span { display: grid; place-items: center; width: 24px; height: 24px; background: #f0f4e9; border: 1px solid #e4ebda; border-radius: 50%; color: #5a7645; font-family: Georgia,serif; font-size: 13px; }
-.lv-campaign-brand>small { margin-left: auto; color: #a1a796; font-size: 10px; font-weight: 400; }
-.lv-campaign-body h3 { min-height: 56px; color: #35462b; font-size: 19px; font-weight: 600; line-height: 1.5; letter-spacing: -.035em; margin: 16px 0 15px; overflow-wrap: anywhere; }
-.lv-card-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.lv-card-tags>span { font-size: 11px; color: #859575; padding: 3px 7px; background: #f2f6ec; border-radius: 3px; }
-.lv-campaign-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 15px; margin-top: 23px; padding-top: 16px; border-top: 1px solid #edf0e7; }
-.lv-campaign-bottom>div>span { font-size: 11px; color: #9da48f; display: block; margin-bottom: 2px; }
-.lv-campaign-bottom strong { font-size: 22px; font-weight: 650; color: #415735; letter-spacing: -.04em; line-height: 1.4; }
-.lv-card-deadline { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #96a084; white-space: nowrap; padding-bottom: 3px; }
-.lv-actual-brand { position: absolute; left: 25px; right: 60px; top: 78px; font-size: 30px; line-height: 1.4; font-weight: 600; color: #4c6642; overflow-wrap: anywhere; }
-.lv-actual-brand-icon { position: absolute; bottom: 32px; right: 27px; color: #718c5f78; transform: rotate(-12deg); }
-.lv-card-loading { display: flex; align-items: center; justify-content: center; min-height: 310px; border: 1px dashed #d8e0ce; border-radius: 8px; color: #8c9a7c; font-size: 15px; background: #ffffff61; }
-.lv-empty { border: 1px dashed #d8e0ce; border-radius: 8px; padding: 40px 25px; display: flex; align-items: center; flex-direction: column; gap: 12px; text-align: center; color: #a0af8d; }
-.lv-empty h3 { font-size: 21px; font-weight: 550; color: #5d714b; margin-top: 5px; }
-.lv-empty>p { font-size: 14px; color: #94a084; }
-.lv-empty>.lv-link { margin-top: 8px; }
-.lv-audience-section { padding-bottom: 45px; }
-.lv-audience-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; }
-.lv-audience-card { padding: 37px 39px; border-radius: 10px; position: relative; overflow: hidden; }
-.lv-for-brand { background: #eaf2dc; border: 1px solid #e1ebd0; }
-.lv-for-creator { background: #21382e; border: 1px solid #21382e; color: #fff; }
-.lv-audience-icon { width: 45px; height: 45px; border: 1px solid #cddcba; background: #dce8c7; display: grid; place-items: center; border-radius: 9px; color: #6b854a; margin-bottom: 19px; }
-.lv-for-creator .lv-audience-icon { border-color: #5f795c; background: #38523c; color: #bad98b; }
-.lv-audience-card .lv-kicker { font-size: 10px; letter-spacing: .09em; color: #79915b; }
-.lv-for-creator .lv-kicker { color: #a9c884; }
-.lv-audience-card h2 { margin: 10px 0 17px; font-size: 31px; line-height: 1.4; font-weight: 600; letter-spacing: -.045em; }
-.lv-for-creator h2 { color: #f4f8ee; }
-.lv-audience-card p { font-size: 14px; color: #899879; line-height: 1.9; }
-.lv-for-creator p { color: #a4b7a1; }
-.lv-audience-card ul { list-style: none; display: grid; gap: 9px; margin: 25px 0 28px; padding: 0; }
-.lv-audience-card li { display: flex; align-items: center; gap: 9px; color: #7a9160; font-size: 13px; }
-.lv-audience-card li>svg { flex-shrink: 0; color: #8da25a; }
-.lv-for-creator li { color: #b6c6aa; }
-.lv-for-creator li>svg { color: #bbd882; }
-.lv-audience-card .lv-button { min-height: 42px; font-size: 13px; padding-inline: 17px; position: relative; z-index: 1; }
-.lv-audience-decoration { position: absolute; bottom: 39px; right: 32px; color: #c8d6af85; transform: rotate(-12deg); }
-.lv-for-creator .lv-audience-decoration { color: #49623b; }
-.lv-how-section { padding-top: 38px; padding-bottom: 75px; text-align: center; }
-.lv-how-heading h2 { font-size: 35px; font-weight: 650; letter-spacing: -.045em; margin: 12px 0; }
-.lv-how-heading p { font-size: 15px; color: #949d87; }
-.lv-guide-switch { display: inline-flex; border: 1px solid #e0e6d7; background: #f3f6ee; border-radius: 6px; padding: 4px; gap: 3px; margin: 27px 0 36px; }
-.lv-guide-switch>button { color: #9ca58c; font-size: 13px; padding: 7px 17px; border-radius: 4px; }
-.lv-guide-switch>button.active { background: white; box-shadow: 0 2px 6px #1d3c0a09; color: #59773e; font-weight: 550; }
-.lv-guide-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 50px; }
-.lv-guide-grid>article { position: relative; }
-.lv-guide-grid>article:not(:last-child):after { content: ''; position: absolute; left: 80%; width: 55%; height: 1px; top: 31px; background: repeating-linear-gradient(90deg,#cfdcbc 0 3px,transparent 3px 8px); }
-.lv-guide-grid>article>span { display: grid; place-items: center; width: 62px; height: 62px; border: 1px solid #e2e9d8; border-radius: 14px; margin: 0 auto 22px; color: #85a459; background: #f4f8ee; }
-.lv-guide-grid h3 { font-size: 19px; color: #4c653a; font-weight: 600; margin-bottom: 12px; letter-spacing: -.035em; }
-.lv-guide-grid p { font-size: 14px; line-height: 1.9; color: #9ca68c; max-width: 270px; margin-inline: auto; }
-.lv-how-link { margin-top: 34px; font-size: 13px; }
-.lv-ppl-section { background: #16251d; padding: 64px 0; color: #fff; }
-.lv-ppl-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: center; }
-.lv-ppl-copy .lv-kicker { color: #a0bd78; font-size: 10px; letter-spacing: .08em; }
-.lv-ppl-copy h2 { color: #f4f7ed; font-size: 41px; font-weight: 550; line-height: 1.3; margin: 17px 0 20px; letter-spacing: -.045em; }
-.lv-ppl-copy>p { font-size: 15px; color: #9aac91; line-height: 1.9; }
-.lv-ppl-copy ul { list-style: none; padding: 0; display: grid; gap: 13px; margin: 25px 0 28px; }
-.lv-ppl-copy li { display: flex; align-items: center; gap: 9px; font-size: 13px; color: #b7cba6; }
-.lv-ppl-copy li>svg { color: #a1bd77; flex-shrink: 0; }
-.lv-ppl-copy>.lv-button { min-height: 43px; font-size: 13px; padding-inline: 17px; }
-.lv-ppl-copy>small { display: block; margin-top: 16px; font-size: 12px; color: #81976f; line-height: 1.9; }
-.lv-ppl-preview { overflow: hidden; border: 1px solid #566d40; background: #25351c; border-radius: 7px; box-shadow: 0 15px 60px #060f074d; }
-.lv-preview-top { display: flex; align-items: center; justify-content: space-between; padding: 9px 12px; gap: 12px; min-height: 48px; border-bottom: 1px solid #4c6336; }
-.lv-preview-top>span { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #bbcca8; }
-.lv-compare-buttons { display: flex; align-items: center; background: #172811; padding: 3px; border-radius: 4px; }
-.lv-compare-buttons>button { padding: 4px 7px; border-radius: 2px; color: #829a6b; font-size: 10px; }
-.lv-compare-buttons>button.active { color: #283d1d; background: #d2e6b4; }
-.lv-preview-scene { position: relative; aspect-ratio: 16/10; overflow: hidden; }
-.lv-preview-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.8) brightness(.8); }
-.lv-preview-product { position: absolute; width: 15%; left: 26%; top: 44%; transform: rotate(-6deg); transition: opacity .2s; }
-.lv-preview-product>img { width: 100%; filter: brightness(.85) drop-shadow(3px 5px 6px #0008); }
-.lv-preview-product.is-hidden { opacity: 0; }
-.lv-product-frame { position: absolute; inset: -5px 0; border: 1px solid #d5f26f4d; }
-.lv-product-frame>i { position: absolute; width: 7px; height: 7px; border: 1.5px solid #d5f26f; }
-.lv-product-frame>i:nth-child(1) { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
-.lv-product-frame>i:nth-child(2) { top: -1px; right: -1px; border-left: 0; border-bottom: 0; }
-.lv-product-frame>i:nth-child(3) { bottom: -1px; left: -1px; border-right: 0; border-top: 0; }
-.lv-product-frame>i:nth-child(4) { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
-.lv-product-frame>small { position: absolute; top: -24px; left: 0; font-size: 9px; background: #d5f26f; color: #395028; padding: 2px 5px; white-space: nowrap; border-radius: 2px; }
-.lv-preview-caption { position: absolute; right: 22px; bottom: 40px; font-size: 13px; color: #e1e9d7; text-align: right; line-height: 1.9; text-shadow: 0 2px 20px #0008; }
-.lv-preview-caption>strong { font-size: 25px; font-weight: 550; letter-spacing: -.04em; }
-.lv-preview-badge { position: absolute; bottom: 12px; left: 15px; font-size: 10px; color: #b9c7ac; background: #10230cc4; padding: 3px 6px; border-radius: 3px; }
-.lv-preview-track { display: flex; align-items: center; gap: 9px; color: #b8caa1; padding: 13px 15px; min-height: 46px; border-top: 1px solid #4d6437; font-size: 10px; }
-.lv-preview-track>div { flex: 1; height: 17px; background: #49652b80; border: 1px solid #a3c15f7d; border-radius: 3px; margin-inline: 8px; }
-.lv-faq-grid { display: grid; grid-template-columns: .9fr 1.5fr; gap: 85px; }
-.lv-faq-grid h2 { font-size: 35px; font-weight: 600; line-height: 1.4; letter-spacing: -.04em; margin: 14px 0 16px; }
-.lv-faq-grid>div>p { font-size: 15px; color: #96a087; line-height: 1.9; }
-.lv-faq-list details { border-bottom: 1px solid #e3e9d9; }
-.lv-faq-list details:first-child { border-top: 1px solid #e3e9d9; }
-.lv-faq-list summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 20px 0; color: #586f44; font-size: 15px; font-weight: 500; }
-.lv-faq-list summary::-webkit-details-marker { display: none; }
-.lv-faq-list summary>.lv-plus { color: #7d9960; transition: transform .2s; }
-.lv-faq-list details[open] summary>.lv-plus { transform: rotate(45deg); }
-.lv-faq-list details>p { color: #97a486; font-size: 14px; line-height: 1.95; padding: 0 30px 23px 0; }
-.lv-final-section { background: #edf4df; border-block: 1px solid #e1ebd0; padding: 51px 0; }
-.lv-final-section>.lv-container { position: relative; overflow: hidden; }
-.lv-final-section .lv-kicker { font-size: 10px; color: #86a166; letter-spacing: .08em; position: relative; z-index: 1; }
-.lv-final-section h2 { font-size: 39px; font-weight: 650; line-height: 1.35; color: #4c6737; letter-spacing: -.045em; margin: 15px 0; position: relative; z-index: 1; }
-.lv-final-section p { color: #9caf85; font-size: 15px; position: relative; z-index: 1; }
-.lv-final-section .lv-container>div { display: flex; align-items: center; gap: 11px; margin-top: 26px; position: relative; z-index: 1; }
-.lv-final-section .lv-button { min-height: 43px; font-size: 13px; }
-.lv-final-decor { position: absolute; right: 70px; top: 10px; color: #d5e1bf; transform: rotate(-13deg); }
-.lv-footer { background: #16251d; color: #fff; padding: 45px 0 20px; }
-.landing-v2 .lv-footer .brand { color: #f2f7eb; font-size: 26px; }
-.landing-v2 .lv-footer .brand-period { color: #c5e277; }
-.lv-footer-top { display: flex; justify-content: space-between; gap: 35px; padding-bottom: 35px; border-bottom: 1px solid #3b502e; }
-.lv-footer-top>div>p { font-size: 12px; color: #8ca478; margin-top: 15px; }
-.lv-footer-links { display: flex; gap: 85px; padding-right: 55px; }
-.lv-footer-links>div { display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #91ac7b; }
-.lv-footer-links strong { font-size: 13px; color: #bacfa4; font-weight: 550; margin-bottom: 5px; }
-.lv-footer-links a:hover { color: #e6f4cf; }
-.lv-footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 20px; font-size: 11px; color: #708c5b; }
-.lv-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-
-@media(min-width:1600px) {
-  .lv-hero { padding-block: 70px; }
-  .lv-hero h1 { font-size: 61px; }
-}
+.landing-v2 { --lv-ink:#19271e; --lv-muted:#64715f; --lv-lime:#d5f26f; --lv-line:#e4e9e2; color:var(--lv-ink); background:#fff; color-scheme:light; min-height:100vh; overflow:clip; font-size:16px; line-height:1.7; }
+.landing-v2 :focus-visible { outline:3px solid #49712c; outline-offset:4px; }
+.landing-v2 button { color:inherit; }
+.landing-v2 img { max-width:100%; }
+.landing-v2 h1,.landing-v2 h2,.landing-v2 h3 { color:var(--lv-ink); word-break:keep-all; }
+.landing-v2 .brand { color:#1d2a20; font-size:29px; gap:9px; letter-spacing:-1.3px; }
+.landing-v2 .brand-symbol { width:33px; height:33px; border-radius:8px; background:var(--lv-lime); }
+.landing-v2 .brand-period { color:#78982d; }
+.lv-container { width:min(1240px,calc(100% - 96px)); margin-inline:auto; }
+.lv-header { border-bottom:1px solid #edf0ea; background:#fff; position:relative; z-index:20; }
+.lv-header-inner { display:flex; align-items:center; gap:34px; min-height:88px; }
+.lv-header nav { display:flex; align-items:center; gap:27px; margin-left:20px; font-size:14px; font-weight:500; }
+.lv-header nav>a,.lv-login { white-space:nowrap; }
+.lv-header nav>a:hover,.lv-link:hover { color:#52772d; }
+.lv-header-actions { margin-left:auto; display:flex; align-items:center; gap:22px; }
+.lv-login { font-size:14px; color:#465043; }
+.lv-button { display:inline-flex; justify-content:center; align-items:center; gap:9px; min-height:49px; padding:0 22px; border-radius:7px; font-size:14px; font-weight:650; line-height:1.4; white-space:nowrap; transition:transform .2s,background .2s; border:1px solid transparent; }
+.lv-button:hover { transform:translateY(-2px); }
+.lv-button-dark { background:#233326; color:#fff; border-color:#233326; }
+.lv-button-dark:hover { background:#354b2d; }
+.lv-button-lime { background:var(--lv-lime); color:#24331d; border-color:var(--lv-lime); }
+.lv-button-lime:hover { background:#e3fa92; }
+.lv-button-white { background:#fff; color:#24331d; border-color:#fff; }
+.lv-header-cta { min-height:40px; padding-inline:16px; }
+.lv-menu { display:none; padding:5px; align-items:center; justify-content:center; }
+.lv-mobile-nav { display:none; }
+.lv-kicker { display:block; color:#5d763a; font-size:12px; font-weight:650; letter-spacing:.09em; line-height:1.5; }
+.lv-hero { background:linear-gradient(118deg,#fafcf6,#f0f6e8); padding:58px 0 66px; }
+.lv-hero-grid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); align-items:center; gap:52px; }
+.lv-hero-copy,.lv-hero-visual { min-width:0; }
+.lv-audience-switch,.lv-guide-switch { display:inline-flex; border:1px solid #dfe6d7; background:#e9eee2; border-radius:7px; padding:4px; gap:2px; }
+.lv-audience-switch { margin-bottom:26px; }
+.lv-audience-switch>button,.lv-guide-switch>button { padding:8px 17px; font-size:14px; color:#637158; font-weight:500; border-radius:4px; }
+.lv-audience-switch>button.active,.lv-guide-switch>button.active { color:#2d4024; background:#fff; box-shadow:0 2px 5px #243c0a0b; font-weight:650; }
+.lv-hero-kicker { margin-bottom:16px; }
+.lv-hero h1 { font-size:clamp(42px,4vw,58px); font-weight:700; line-height:1.25; letter-spacing:-.055em; margin:0 0 23px; }
+.lv-hero h1>span { position:relative; z-index:0; }
+.lv-hero h1>span:after { content:''; position:absolute; bottom:4px; left:-2px; right:-3px; height:15px; z-index:-1; background:#d5f26fbb; transform:rotate(-1deg); }
+.lv-hero-description { font-size:16px; line-height:1.9; color:#5f6d57; letter-spacing:-.025em; margin-bottom:28px; max-width:510px; }
+.lv-hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:22px; }
+.lv-link { display:inline-flex; align-items:center; gap:12px; font-size:14px; font-weight:600; color:#395329; }
+.lv-plus { font-size:23px; font-weight:400; line-height:1; }
+.lv-hero-promise { display:flex; flex-wrap:wrap; gap:14px; margin-top:28px; padding-top:22px; border-top:1px solid #dde7d2; }
+.lv-hero-promise>span { display:flex; align-items:center; gap:5px; font-size:12px; color:#5d6f50; }
+.lv-visual-heading { display:flex; align-items:center; justify-content:space-between; gap:10px; margin:0 0 13px; font-size:12px; color:#5e744c; }
+.lv-visual-heading>span:first-child { display:flex; align-items:center; gap:6px; font-size:11px; letter-spacing:.035em; font-weight:650; }
+.lv-ppl-preview { overflow:hidden; border:1px solid #465c3b; background:#1d3023; border-radius:12px; box-shadow:0 20px 55px #243c1b20; }
+.lv-preview-top { display:flex; align-items:center; justify-content:space-between; padding:10px 13px; gap:8px; min-height:53px; border-bottom:1px solid #ffffff15; }
+.lv-preview-top>span { display:flex; align-items:center; gap:6px; font-size:13px; color:#e1ebd8; }
+.lv-compare-buttons { display:flex; gap:3px; background:#0f2018; padding:3px; border-radius:5px; }
+.landing-v2 .lv-compare-buttons>button { padding:5px 10px; font-size:12px; color:#c4d2b9; border-radius:3px; }
+.landing-v2 .lv-compare-buttons>button.active { color:#20331a; background:#d5f26f; }
+.lv-preview-scene { position:relative; aspect-ratio:16/11; overflow:hidden; }
+.lv-preview-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:saturate(.8) brightness(.78); }
+.lv-preview-product { position:absolute; width:15%; left:26%; top:44%; transform:rotate(-6deg); transition:opacity .2s; }
+.lv-preview-product>img { width:100%; filter:brightness(.85) drop-shadow(3px 5px 6px #0008); }
+.lv-preview-product.is-hidden,.lv-product-track>div.is-hidden { opacity:0; }
+.lv-product-frame { position:absolute; inset:-6px; border:1px solid #d5f26f66; }
+.lv-product-frame>i { position:absolute; width:9px; height:9px; border:2px solid #d5f26f; }
+.lv-product-frame>i:nth-child(1) { left:-2px; top:-2px; border-right:0; border-bottom:0; }
+.lv-product-frame>i:nth-child(2) { right:-2px; top:-2px; border-left:0; border-bottom:0; }
+.lv-product-frame>i:nth-child(3) { left:-2px; bottom:-2px; border-right:0; border-top:0; }
+.lv-product-frame>i:nth-child(4) { right:-2px; bottom:-2px; border-left:0; border-top:0; }
+.lv-product-frame>small { position:absolute; left:-1px; bottom:calc(100% + 8px); font-size:8px; letter-spacing:.04em; padding:2px 5px; background:#d5f26f; color:#26351d; white-space:nowrap; }
+.lv-preview-caption { position:absolute; right:22px; bottom:48px; font-size:14px; color:#edf3e5; text-align:right; line-height:1.9; text-shadow:0 2px 14px #000b; }
+.lv-preview-caption>strong { font-size:26px; font-weight:550; letter-spacing:-.04em; }
+.lv-preview-badge { position:absolute; bottom:12px; left:13px; font-size:11px; color:#e0ebd7; background:#10230cd9; padding:3px 7px; border-radius:3px; }
+.lv-preview-track { display:flex; align-items:center; gap:9px; color:#d0dec3; padding:9px 13px; min-height:42px; border-top:1px solid #ffffff15; font-size:11px; }
+.lv-preview-track>span:first-of-type { width:55px; flex-shrink:0; }
+.lv-preview-track>div { flex:1; height:20px; background:repeating-linear-gradient(90deg,#6b805a44 0px,#6b805a44 28px,#ffffff10 29px,#ffffff10 30px); border:1px solid #8b9f6f44; border-radius:3px; }
+.lv-product-track { padding-top:2px; border-top:0; }
+.lv-product-track>div { height:22px; margin-inline:14% 8%; background:#63873166; border-color:#c3e67c88; color:#d7edb5; font-size:10px; padding-left:9px; white-space:nowrap; transition:opacity .2s; }
+.lv-product-note { display:flex; align-items:center; gap:13px; margin-top:18px; }
+.lv-product-note-icon { display:grid; place-items:center; width:43px; height:43px; border:1px solid #d5e4c6; border-radius:10px; background:#fff; color:#688744; flex-shrink:0; }
+.lv-product-note strong { font-size:14px; font-weight:600; }
+.lv-product-note p { font-size:12px; color:#65775a; margin:2px 0 0; }
+.lv-manifesto { border-bottom:1px solid var(--lv-line); padding:28px 0; }
+.lv-manifesto>.lv-container { display:flex; align-items:center; justify-content:space-between; gap:25px; }
+.lv-manifesto p { font-size:18px; letter-spacing:-.035em; margin:0; color:#495d3b; }
+.lv-section { padding:85px 0; }
+.lv-section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:30px; margin-bottom:30px; }
+.lv-section h2 { font-size:36px; font-weight:650; letter-spacing:-.045em; line-height:1.35; margin:12px 0 15px; }
+.lv-section-head p { font-size:16px; color:var(--lv-muted); margin:0; }
+.lv-section-head>.lv-link { flex-shrink:0; margin-bottom:4px; }
+.lv-scene-grid,.lv-campaign-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.lv-scene-card,.lv-campaign-card { min-width:0; border:1px solid #e1e8d9; border-radius:9px; overflow:hidden; background:#fff; }
+.lv-scene-image { height:225px; position:relative; overflow:hidden; }
+.lv-scene-image>img { width:100%; height:100%; object-fit:cover; filter:saturate(.72) brightness(.8); }
+.lv-scene-tag { position:absolute; left:14px; bottom:14px; display:flex; align-items:center; gap:6px; font-size:12px; background:#152318cc; color:#fff; padding:4px 8px; border-radius:4px; }
+.lv-scene-example { position:absolute; left:14px; top:14px; padding:3px 7px; border-radius:3px; font-size:11px; color:#3f5632; background:#f4f9ec; }
+.lv-scene-body { padding:23px; }
+.lv-scene-body>span { color:#5f793e; font-size:12px; }
+.lv-scene-body h3 { font-size:19px; line-height:1.5; margin:8px 0 9px; letter-spacing:-.035em; }
+.lv-scene-body p { font-size:14px; color:#68765e; margin:0 0 22px; }
+.lv-example-note { font-size:12px; line-height:1.8; color:#6d7b60; margin:20px 0 0; }
+.lv-audience-section { padding-top:0; }
+.lv-audience-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:25px; }
+.lv-audience-card { padding:38px; border-radius:10px; border:1px solid #e1e8d9; }
+.lv-for-brand { background:#f3f7eb; }
+.lv-for-creator { background:#203126; color:#eef4e6; border-color:#203126; }
+.lv-audience-icon { display:grid; place-items:center; width:47px; height:47px; border-radius:10px; background:#e2edce; color:#4c6a34; margin-bottom:23px; }
+.lv-for-creator .lv-audience-icon { background:#3a4d30; color:#c9e58c; }
+.lv-audience-card h2 { font-size:31px; margin:15px 0 19px; }
+.landing-v2 .lv-for-creator h2 { color:#f3f7ed; }
+.lv-for-creator .lv-kicker { color:#c3db95; }
+.lv-audience-card p { font-size:16px; line-height:1.9; color:#617452; }
+.lv-for-creator p { color:#c0cfb5; }
+.lv-audience-card ul { list-style:none; padding:0; display:grid; gap:10px; margin:24px 0 28px; }
+.lv-audience-card li { display:flex; align-items:center; gap:8px; font-size:14px; }
+.lv-audience-card li>svg { flex-shrink:0; color:#739442; }
+.lv-for-creator li>svg { color:#c2e57a; }
+.lv-campaign-section { background:#f7f9f4; border-block:1px solid #ecf0e5; }
+.lv-category-tabs { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; }
+.lv-category-tabs>button { padding:7px 15px; font-size:14px; border:1px solid #e1e7d7; border-radius:5px; background:#fff; color:#597345; }
+.lv-category-tabs>button.active { background:#2f4527; color:#fff; border-color:#2f4527; }
+.lv-campaign-note { display:flex; justify-content:space-between; align-items:center; gap:18px; margin:0 0 20px; }
+.lv-campaign-note>button { color:#45662c; text-decoration:underline; white-space:nowrap; font-size:12px; }
+.lv-campaign-card { display:block; transition:transform .2s,box-shadow .2s; }
+.lv-campaign-card:hover { transform:translateY(-3px); box-shadow:0 10px 30px #2d441712; }
+.lv-campaign-image { height:225px; position:relative; overflow:hidden; background:#d5e2cf; }
+.lv-campaign-coffee { background:radial-gradient(ellipse at 65% 40%,#a5bc96,#c5d8af); }
+.lv-campaign-product { position:absolute; bottom:-16px; right:15%; height:215px; transform:rotate(15deg); filter:drop-shadow(0 12px 10px #263c252b); }
+.lv-coffee-title { position:absolute; top:65px; left:23px; font-family:Georgia,serif; font-size:31px; color:#385d34; line-height:1.1; }
+.lv-coffee-title em { font-size:39px; }
+.lv-campaign-photo { width:100%; height:100%; object-fit:cover; filter:saturate(.6) brightness(.65); }
+.lv-campaign-wordmark { position:absolute; top:90px; left:24px; color:#fff; font-size:29px; font-family:Georgia,serif; }
+.lv-campaign-wordmark>small { display:block; font:10px sans-serif; letter-spacing:.15em; margin-top:8px; }
+.lv-campaign-status { position:absolute; top:14px; left:14px; background:#d9f58d; padding:4px 8px; color:#385126; border:1px solid #c9e27f; border-radius:4px; font-size:12px; font-weight:600; }
+.lv-campaign-status.is-example { background:#ffffffeb; color:#5c704b; border-color:#d9e0cf; }
+.lv-platform-chip { position:absolute; bottom:12px; left:12px; padding:4px 7px; color:#fff; background:#142619c9; font-size:12px; border-radius:4px; }
+.lv-actual-brand { position:absolute; top:83px; left:24px; max-width:80%; font-size:28px; font-weight:650; overflow-wrap:anywhere; }
+.lv-actual-brand-icon { position:absolute; right:25px; bottom:25px; opacity:.18; }
+.lv-campaign-body { padding:22px; }
+.lv-campaign-brand { display:flex; align-items:center; gap:8px; font-size:13px; color:#526541; }
+.lv-campaign-brand>span { display:grid; place-items:center; width:24px; height:24px; background:#f0f4e9; border:1px solid #e4ebda; border-radius:50%; color:#5a7645; font-family:Georgia,serif; }
+.lv-campaign-brand>small { margin-left:auto; font-size:11px; }
+.lv-campaign-body h3 { min-height:57px; font-size:19px; font-weight:600; line-height:1.5; letter-spacing:-.035em; margin:16px 0 15px; overflow-wrap:anywhere; }
+.lv-card-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.lv-card-tags>span { font-size:12px; padding:3px 7px; background:#f3f6ee; color:#5a7046; border-radius:3px; }
+.lv-campaign-bottom { display:flex; justify-content:space-between; align-items:flex-end; gap:15px; margin-top:23px; padding-top:16px; border-top:1px solid #edf0e7; }
+.lv-campaign-bottom>div>span { font-size:12px; color:#637650; display:block; margin-bottom:2px; }
+.lv-campaign-bottom strong { font-size:22px; font-weight:650; color:#415735; letter-spacing:-.04em; line-height:1.4; }
+.lv-card-deadline { display:flex; align-items:center; gap:5px; font-size:12px; color:#60764a; white-space:nowrap; }
+.lv-card-loading,.lv-empty { padding:50px 20px; text-align:center; color:#627254; border:1px dashed #cfddbf; border-radius:7px; }
+.lv-empty h3 { font-size:21px; margin:12px 0; }
+.lv-empty p { font-size:15px; margin-bottom:20px; }
+.lv-how-heading { text-align:center; }
+.lv-how-heading h2 { margin-bottom:26px; }
+.lv-guide-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:45px; margin:48px 0 28px; }
+.lv-guide-grid article { text-align:center; }
+.lv-guide-grid article>span { display:grid; place-items:center; width:62px; height:62px; background:#f0f5e7; border:1px solid #e3ebd7; border-radius:14px; color:#64863e; margin:0 auto 22px; }
+.lv-guide-grid h3 { font-size:21px; letter-spacing:-.035em; margin-bottom:13px; }
+.lv-guide-grid p { color:#627754; font-size:16px; line-height:1.85; max-width:300px; margin:auto; }
+.lv-how-link { display:flex; width:fit-content; margin:40px auto 0; }
+.lv-preserve-section { background:#182a20; padding:70px 0; color:#fff; }
+.lv-preserve-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.lv-preserve-section .lv-kicker { color:#badc86; }
+.landing-v2 .lv-preserve-section h2 { color:#f6f9ef; font-size:39px; line-height:1.4; letter-spacing:-.045em; margin:18px 0; }
+.lv-preserve-section h2>span { color:#d5f26f; }
+.lv-preserve-section p { font-size:16px; color:#b9ccb0; line-height:1.9; margin:0 0 25px; }
+.lv-preserve-list { display:grid; gap:25px; }
+.lv-preserve-list article { display:flex; gap:17px; }
+.lv-preserve-list article>svg { flex-shrink:0; color:#c7e590; margin-top:3px; }
+.landing-v2 .lv-preserve-list h3 { font-size:18px; color:#f1f6e8; margin:0 0 7px; }
+.lv-preserve-list p { font-size:14px; margin:0; }
+.lv-preserve-list>small { font-size:12px; color:#b4c4a6; border-top:1px solid #ffffff20; padding-top:18px; }
+.lv-faq-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:60px; }
+.lv-faq-list details { border-bottom:1px solid #e0e7d8; }
+.lv-faq-list summary { display:flex; align-items:center; justify-content:space-between; gap:20px; list-style:none; cursor:pointer; padding:22px 0; font-size:16px; font-weight:550; }
+.lv-faq-list summary::-webkit-details-marker { display:none; }
+.lv-faq-list summary>svg { flex-shrink:0; }
+.lv-faq-list details[open] summary>svg { transform:rotate(180deg); }
+.lv-faq-list details>p { font-size:16px; color:#637653; line-height:1.9; padding-bottom:23px; }
+.lv-final-section { padding:64px 0; background:#e7f3cd; text-align:center; }
+.lv-final-section h2 { font-size:39px; letter-spacing:-.045em; line-height:1.4; margin:15px 0 18px; }
+.lv-final-section p { color:#577140; font-size:16px; }
+.lv-final-section .lv-container>div { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:27px; }
+.lv-footer { background:#fbfcf8; padding:48px 0 22px; }
+.lv-footer-top { display:flex; justify-content:space-between; gap:40px; margin-bottom:42px; }
+.lv-footer-top p { font-size:14px; color:#68795b; margin-top:14px; }
+.lv-footer-links { display:flex; gap:75px; }
+.lv-footer-links>div { display:flex; flex-direction:column; gap:9px; font-size:14px; color:#61714f; }
+.lv-footer-links strong { color:#34482b; margin-bottom:7px; font-size:14px; }
+.lv-footer-bottom { border-top:1px solid #e6ebdf; padding-top:20px; display:flex; justify-content:space-between; gap:20px; font-size:12px; color:#6c7b60; }
+.lv-mobile-break { display:none; }
+@media(min-width:1600px) { .lv-hero { padding:75px 0; } }
 @media(max-width:1200px) {
-  .lv-container { width: calc(100% - 72px); }
-  .lv-header-inner { gap: 25px; }
-  .lv-header nav { gap: 21px; margin-left: 8px; font-size: 13px; }
-  .lv-header-actions { gap: 17px; }
-  .landing-v2 .brand { font-size: 26px; }
-  .lv-header-cta { font-size: 12px; padding-inline: 12px; }
-  .lv-hero-grid { gap: 35px; grid-template-columns: 1.1fr 1fr; }
-  .lv-hero h1 { font-size: 48px; }
-  .lv-hero-description { font-size: 14px; }
-  .lv-search-platform { min-width: 121px; padding-left: 7px; }
-  .lv-search-platform>select { font-size: 13px; }
-  .lv-search-input { padding-inline: 10px; }
-  .lv-search-input>input { font-size: 12px; }
-  .lv-search-submit { width: 46px; height: 46px; }
-  .lv-photo-stage { height: 433px; }
-  .lv-photo-one { height: 266px; }
-  .lv-photo-two { height: 227px; }
-  .lv-photo-three { height: 232px; }
-  .lv-connection-note { bottom: 55px; padding: 13px 15px 13px 11px; gap: 10px; }
-  .lv-connection-note strong { font-size: 12px; }
-  .lv-connection-note>span { width: 37px; height: 37px; }
-  .lv-platform-strip>.lv-container { gap: 35px; }
-  .lv-platform-strip>.lv-container>div { gap: 30px; }
-  .lv-platform-strip>.lv-container>div>span { font-size: 16px; gap: 8px; }
-  .lv-platform-strip>.lv-container>small { font-size: 11px; max-width: 130px; }
-  .lv-creator-grid { gap: 18px; }
-  .lv-creator-image { height: 230px; }
-  .lv-creator-body { padding: 17px 15px; }
-  .lv-creator-body h3 { font-size: 18px; min-height: 53px; }
-  .lv-creator-body>p { font-size: 11px; }
-  .lv-card-action { font-size: 11px; }
-  .lv-campaign-grid { gap: 19px; }
-  .lv-campaign-image { height: 205px; }
-  .lv-campaign-product { height: 195px; right: 10%; }
-  .lv-campaign-body { padding: 20px; }
-  .lv-campaign-body h3 { font-size: 18px; }
-  .lv-campaign-bottom strong { font-size: 20px; }
-  .lv-card-deadline { font-size: 10px; gap: 4px; }
-  .lv-audience-card { padding: 32px; }
-  .lv-audience-card h2 { font-size: 28px; }
-  .lv-audience-card p { font-size: 13px; }
-  .lv-audience-card li { font-size: 12px; }
-  .lv-ppl-grid { gap: 45px; }
-  .lv-ppl-copy h2 { font-size: 36px; }
-  .lv-ppl-copy>p { font-size: 14px; }
-  .lv-ppl-copy li { font-size: 12px; }
-  .lv-preview-caption>strong { font-size: 22px; }
-  .lv-faq-grid { gap: 60px; }
+  .lv-container { width:calc(100% - 64px); }
+  .lv-header-inner { gap:22px; }
+  .lv-header nav { gap:18px; margin-left:0; }
+  .lv-header-actions { gap:16px; }
+  .lv-hero-grid { gap:30px; }
+  .lv-hero h1 { font-size:46px; }
+  .lv-hero-description br { display:none; }
+  .lv-manifesto p { font-size:16px; }
+  .lv-scene-body { padding:19px; }
+  .lv-scene-body h3 { min-height:57px; }
 }
 @media(max-width:1000px) {
-  .lv-header nav { display: none; }
-  .lv-menu { display: inline-flex; color: #5a6e47; }
-  .lv-mobile-nav { display: flex!important; flex-direction: column; width: 100%; padding: 20px 36px; gap: 17px; position: absolute; top: 100%; border-bottom: 1px solid #dbe6ce; background: #fff; box-shadow: 0 18px 25px #1c390b0d; margin: 0!important; }
-  .lv-mobile-nav>a { font-size: 15px; color: #5c7447; }
-  .lv-header-inner { min-height: 78px; }
-  .lv-hero { padding-top: 43px; padding-bottom: 45px; }
-  .lv-hero-grid { grid-template-columns: 1fr; gap: 35px; }
-  .lv-hero-copy { max-width: 680px; margin-inline: auto; text-align: center; width: 100%; }
-  .lv-hero h1 { font-size: 56px; }
-  .lv-hero-description { font-size: 16px; }
-  .lv-search-form { max-width: 620px; margin-inline: auto; }
-  .lv-search-input>input { font-size: 14px; }
-  .lv-popular-search { justify-content: center; }
-  .lv-hero-visual { width: 520px; max-width: 100%; margin-inline: auto; }
-  .lv-photo-stage { height: 435px; }
-  .lv-photo-one { height: 270px; width: 43%; left: 3%; }
-  .lv-photo-two { height: 225px; width: 40%; right: 6%; }
-  .lv-photo-three { height: 233px; width: 39%; right: 11%; }
-  .lv-connection-note { left: 2%; bottom: 55px; }
-  .lv-photo-disclosure { margin-top: 23px; }
-  .lv-platform-strip>.lv-container { min-height: 105px; gap: 35px; justify-content: space-between; }
-  .lv-platform-strip>.lv-container>div { gap: 27px; }
-  .lv-platform-strip>.lv-container>small { display: none; }
-  .lv-section { padding-block: 62px; }
-  .lv-section-head h2 { font-size: 31px; }
-  .lv-section-head p { font-size: 14px; }
-  .lv-creator-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 23px; }
-  .lv-creator-image { height: 280px; }
-  .lv-creator-body { padding: 21px; }
-  .lv-creator-body h3 { font-size: 21px; min-height: 60px; }
-  .lv-creator-body>p { font-size: 13px; }
-  .lv-card-action { font-size: 13px; }
-  .lv-profile-category { font-size: 12px; }
-  .lv-campaign-body { padding: 17px; }
-  .lv-campaign-body h3 { font-size: 16px; min-height: 72px; }
-  .lv-campaign-brand { font-size: 11px; }
-  .lv-campaign-brand>small { font-size: 8px; }
-  .lv-campaign-image { height: 185px; }
-  .lv-campaign-product { height: 170px; right: 7%; }
-  .lv-coffee-title { font-size: 17px; left: 18px; top: 68px; }
-  .lv-coffee-title>em { font-size: 30px; }
-  .lv-fashion-title { font-size: 23px; left: 20px; top: 62px; }
-  .lv-fashion-title>em { font-size: 20px; }
-  .lv-campaign-grid { gap: 16px; }
-  .lv-campaign-bottom { gap: 8px; }
-  .lv-campaign-bottom strong { font-size: 18px; }
-  .lv-card-deadline { font-size: 9px; }
-  .lv-card-deadline>svg { width: 11px; }
-  .lv-campaign-bottom>div>span { font-size: 10px; }
-  .lv-audience-grid { gap: 21px; }
-  .lv-audience-card { padding: 29px; }
-  .lv-audience-card h2 { font-size: 26px; }
-  .lv-audience-card p { font-size: 13px; }
-  .lv-audience-card li { font-size: 11px; gap: 7px; }
-  .lv-audience-decoration { right: 20px; bottom: 40px; }
-  .lv-audience-decoration>svg { width: 75px; height: 75px; }
-  .lv-audience-card .lv-button { font-size: 12px; padding-inline: 14px; }
-  .lv-how-section { padding-top: 0; }
-  .lv-guide-grid { gap: 35px; }
-  .lv-guide-grid h3 { font-size: 17px; }
-  .lv-guide-grid p { font-size: 13px; }
-  .lv-ppl-grid { grid-template-columns: 1fr; gap: 35px; }
-  .lv-ppl-copy { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 0 30px; }
-  .lv-ppl-copy>.lv-kicker { grid-column: 1/-1; }
-  .lv-ppl-copy h2 { grid-column: 1; grid-row: 2/4; margin-top: 15px; font-size: 37px; }
-  .lv-ppl-copy>p { grid-column: 2; grid-row: 2; margin-top: 17px; }
-  .lv-ppl-copy ul { grid-column: 2; grid-row: 3/5; margin: 17px 0 0; gap: 11px; }
-  .lv-ppl-copy>.lv-button { grid-column: 1; width: max-content; grid-row: 4; }
-  .lv-ppl-copy>small { grid-column: 1/-1; margin-top: 18px; font-size: 11px; }
-  .lv-ppl-copy>small>br { display: none; }
-  .lv-ppl-preview { width: 100%; max-width: 740px; margin-inline: auto; }
-  .lv-preview-scene { aspect-ratio: 16/9; }
-  .lv-faq-grid { grid-template-columns: .8fr 1.3fr; gap: 35px; }
-  .lv-faq-grid h2 { font-size: 30px; }
-  .lv-faq-grid>div>p { font-size: 14px; }
-  .lv-faq-list summary { font-size: 14px; }
-  .lv-final-section h2 { font-size: 35px; }
-  .lv-final-decor { right: 20px; }
-  .lv-footer-links { gap: 55px; padding-right: 0; }
+  .lv-header nav { display:none; }
+  .lv-menu { display:flex; }
+  .lv-header-inner { min-height:78px; }
+  .lv-header .lv-mobile-nav { display:flex; flex-direction:column; align-items:stretch; gap:0; padding:8px 32px 18px; margin:0; border-top:1px solid #e9eee1; }
+  .lv-mobile-nav>a { padding:13px 0; font-size:15px; }
+  .lv-hero-grid { grid-template-columns:minmax(0,1fr); gap:42px; }
+  .lv-hero-copy { max-width:680px; }
+  .lv-hero h1 { font-size:57px; }
+  .lv-hero-visual { width:min(100%,650px); margin-inline:auto; }
+  .lv-hero-description br { display:initial; }
+  .lv-hero-promise { max-width:500px; }
+  .lv-preview-scene { aspect-ratio:16/9; }
+  .lv-manifesto>.lv-container { align-items:flex-start; flex-direction:column; gap:10px; }
+  .lv-section-head { align-items:flex-start; flex-direction:column; gap:14px; }
+  .lv-scene-grid,.lv-campaign-grid { gap:15px; }
+  .lv-campaign-image,.lv-scene-image { height:190px; }
+  .lv-scene-body p { min-height:48px; }
+  .lv-campaign-body { padding:17px; }
+  .lv-campaign-brand { flex-wrap:wrap; }
+  .lv-campaign-brand>small { margin-left:0; }
+  .lv-campaign-bottom { align-items:flex-start; flex-direction:column; gap:10px; }
+  .lv-audience-card { padding:28px; }
+  .lv-audience-card h2 { font-size:27px; }
+  .lv-audience-card p br { display:none; }
+  .lv-guide-grid { gap:25px; }
+  .lv-guide-grid h3 { font-size:19px; }
+  .lv-preserve-grid { gap:35px; }
+  .landing-v2 .lv-preserve-section h2 { font-size:33px; }
+  .lv-faq-grid { gap:30px; grid-template-columns:.75fr 1.25fr; }
 }
 @media(max-width:760px) {
-  .lv-container { width: calc(100% - 40px); }
-  .lv-header-inner { min-height: 73px; }
-  .landing-v2 .brand { font-size: 25px; gap: 8px; }
-  .landing-v2 .brand-symbol { width: 29px; height: 29px; border-radius: 7px; }
-  .landing-v2 .brand-symbol>svg { width: 20px; }
-  .lv-header-actions { gap: 17px; }
-  .lv-login { font-size: 13px; }
-  .lv-header-cta { min-height: 36px; font-size: 11px; padding-inline: 12px; }
-  .lv-mobile-nav { padding: 20px; }
-  .lv-hero { padding-top: 32px; }
-  .lv-audience-switch { margin-bottom: 22px; }
-  .lv-hero h1 { font-size: 48px; margin-bottom: 20px; }
-  .lv-hero-description { font-size: 15px; margin-bottom: 25px; }
-  .lv-hero-kicker { font-size: 9px; }
-  .lv-search-form { padding: 8px; min-height: 70px; }
-  .lv-search-platform { min-width: 123px; }
-  .lv-search-submit { width: 48px; height: 48px; }
-  .lv-hero-visual { width: 465px; }
-  .lv-photo-stage { height: 400px; }
-  .lv-photo-one { height: 255px; }
-  .lv-photo-two { height: 214px; }
-  .lv-photo-three { height: 221px; }
-  .lv-connection-note { bottom: 48px; left: 0; }
-  .lv-connection-note strong { font-size: 12px; }
-  .lv-connection-note small { font-size: 10px; }
-  .lv-connection-note>span { width: 35px; height: 35px; }
-  .lv-connection-note>span>svg { width: 20px; }
-  .lv-photo-disclosure { font-size: 11px; }
-  .lv-platform-strip>.lv-container { gap: 25px; min-height: 99px; }
-  .lv-platform-strip>.lv-container>span { font-size: 11px; }
-  .lv-platform-strip strong { font-size: 13px; }
-  .lv-platform-strip>.lv-container>div { gap: 20px; }
-  .lv-platform-strip>.lv-container>div>span { font-size: 14px; gap: 7px; }
-  .lv-platform-strip>.lv-container>div>span>svg { width: 21px; }
-  .lv-section { padding-block: 48px; }
-  .lv-section-head { gap: 22px; margin-bottom: 25px; }
-  .lv-section-head h2 { font-size: 29px; margin-top: 10px; }
-  .lv-kicker { font-size: 10px; }
-  .lv-section-head p { font-size: 13px; }
-  .lv-section-head>.lv-link { font-size: 12px; gap: 8px; }
-  .lv-creator-grid { gap: 20px; }
-  .lv-creator-image { height: 250px; }
-  .lv-creator-body { padding: 20px; }
-  .lv-creator-body h3 { font-size: 20px; }
-  .lv-example-note { font-size: 11px; }
-  .lv-campaign-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
-  .lv-campaign-body { padding: 19px; }
-  .lv-campaign-body h3 { min-height: 54px; font-size: 17px; }
-  .lv-campaign-brand { font-size: 12px; }
-  .lv-campaign-brand>small { font-size: 9px; }
-  .lv-campaign-image { height: 205px; }
-  .lv-campaign-product { height: 190px; right: 12%; }
-  .lv-coffee-title { top: 75px; left: 24px; font-size: 19px; }
-  .lv-coffee-title>em { font-size: 33px; }
-  .lv-campaign-bottom strong { font-size: 19px; }
-  .lv-card-deadline { font-size: 10px; }
-  .lv-campaign-bottom>div>span { font-size: 10px; }
-  .lv-category-tabs { gap: 7px; margin-top: 22px; }
-  .lv-category-tabs>button { padding: 6px 13px; font-size: 12px; }
-  .lv-audience-card { padding: 25px; }
-  .lv-audience-grid { gap: 19px; }
-  .lv-audience-card h2 { font-size: 23px; }
-  .lv-audience-card p { font-size: 12px; }
-  .lv-audience-card li { font-size: 11px; gap: 6px; line-height: 1.7; align-items: flex-start; }
-  .lv-audience-card li>svg { width: 14px; margin-top: 1px; }
-  .lv-audience-card .lv-button { min-height: 39px; font-size: 11px; padding-inline: 12px; }
-  .lv-audience-decoration { display: none; }
-  .lv-audience-card ul { margin-block: 21px 25px; }
-  .lv-audience-icon { width: 40px; height: 40px; margin-bottom: 17px; }
-  .lv-audience-icon>svg { width: 22px; }
-  .lv-how-section { padding-top: 0; }
-  .lv-how-heading h2 { font-size: 30px; }
-  .lv-how-heading p { font-size: 13px; }
-  .lv-guide-grid { gap: 23px; }
-  .lv-guide-grid h3 { font-size: 16px; }
-  .lv-guide-grid p { font-size: 12px; line-height: 1.9; }
-  .lv-guide-grid>article>span { width: 55px; height: 55px; border-radius: 12px; }
-  .lv-guide-grid>article>span>svg { width: 24px; }
-  .lv-guide-grid>article:not(:last-child):after { top: 28px; }
-  .lv-guide-switch { margin-bottom: 30px; }
-  .lv-ppl-section { padding-block: 47px; }
-  .lv-ppl-copy { gap: 0 25px; }
-  .lv-ppl-copy h2 { font-size: 33px; }
-  .lv-ppl-copy>p { font-size: 13px; }
-  .lv-ppl-copy li { font-size: 11px; gap: 6px; align-items: flex-start; }
-  .lv-ppl-copy li>svg { width: 15px; margin-top: 2px; }
-  .lv-ppl-copy>.lv-button { font-size: 11px; min-height: 38px; padding-inline: 12px; gap: 7px; }
-  .lv-preview-caption>strong { font-size: 25px; }
-  .lv-faq-grid { grid-template-columns: 1fr; gap: 24px; }
-  .lv-faq-grid>div>p { font-size: 13px; }
-  .lv-faq-grid>div>p>br { display: none; }
-  .lv-faq-grid h2>br { display: none; }
-  .lv-faq-grid h2 { font-size: 29px; }
-  .lv-faq-list summary { padding-block: 18px; }
-  .lv-faq-list details>p { font-size: 13px; }
-  .lv-final-section { padding-block: 40px; }
-  .lv-final-section h2 { font-size: 31px; }
-  .lv-final-section p { font-size: 13px; }
-  .lv-final-decor { right: -35px; top: 12px; opacity: .8; }
-  .lv-final-decor>svg { width: 180px; }
-  .lv-footer { padding-top: 35px; }
-  .lv-footer-top { gap: 30px; padding-bottom: 30px; }
-  .lv-footer-links { gap: 40px; }
-  .lv-footer-top>div>p { max-width: 210px; font-size: 11px; }
-  .lv-footer-links>div { font-size: 11px; }
-  .lv-footer-links strong { font-size: 12px; }
-  .lv-footer-bottom { font-size: 10px; gap: 15px; }
+  .lv-container { width:calc(100% - 40px); }
+  .lv-header .lv-mobile-nav { padding-inline:20px; }
+  .lv-section { padding:60px 0; }
+  .lv-section h2 { font-size:31px; }
+  .lv-audience-section { padding-top:0; }
+  .lv-scene-grid,.lv-campaign-grid { grid-template-columns:minmax(0,1fr); gap:22px; }
+  .lv-campaign-image,.lv-scene-image { height:260px; }
+  .lv-campaign-body,.lv-scene-body { padding:23px; }
+  .lv-scene-body h3,.lv-scene-body p { min-height:0; }
+  .lv-campaign-brand>small { margin-left:auto; }
+  .lv-campaign-body h3 { min-height:0; }
+  .lv-campaign-bottom { align-items:flex-end; flex-direction:row; }
+  .lv-audience-grid { grid-template-columns:minmax(0,1fr); gap:20px; }
+  .lv-audience-card { padding:30px; }
+  .lv-audience-card h2 { font-size:29px; }
+  .lv-guide-grid { grid-template-columns:minmax(0,1fr); gap:32px; margin-top:34px; }
+  .lv-guide-grid article { text-align:left; display:grid; grid-template-columns:55px 1fr; column-gap:18px; }
+  .lv-guide-grid article>span { grid-row:span 2; width:55px; height:55px; margin:0; }
+  .lv-guide-grid h3 { margin:0 0 8px; }
+  .lv-guide-grid p { max-width:none; margin:0; }
+  .lv-preserve-grid { grid-template-columns:minmax(0,1fr); gap:42px; }
+  .lv-preserve-section { padding:55px 0; }
+  .lv-faq-grid { grid-template-columns:minmax(0,1fr); gap:12px; }
+  .lv-final-section h2 { font-size:31px; }
+  .lv-footer-links { gap:40px; }
+  .lv-footer-top { flex-direction:column; gap:30px; }
+  .lv-footer-bottom { flex-direction:column; gap:6px; }
 }
-@media(max-width:600px) {
-  .lv-platform-strip>.lv-container { display: block; padding-block: 21px; }
-  .lv-platform-strip>.lv-container>span { display: block; text-align: center; font-size: 12px; margin-bottom: 17px; }
-  .lv-platform-strip>.lv-container>span>br { display: none; }
-  .lv-platform-strip strong { font-size: 12px; font-weight: 500; }
-  .lv-platform-strip>.lv-container>div { justify-content: space-between; gap: 12px; }
-  .lv-platform-strip>.lv-container>div>span { font-size: 13px; gap: 6px; }
-  .lv-platform-strip>.lv-container>div>span>svg { width: 19px; height: 19px; }
-  .lv-hero-copy { text-align: left; }
-  .lv-hero h1 { font-size: 42px; }
-  .lv-hero-description { font-size: 14px; line-height: 1.9; }
-  .lv-hero-bottom>span { font-size: 11px; }
-  .lv-popular-search { justify-content: flex-start; gap: 7px; }
-  .lv-popular-search>span { font-size: 11px; }
-  .lv-popular-search>a { font-size: 11px; padding-inline: 6px; }
-  .lv-search-input>input { font-size: 12px; }
-  .lv-search-platform { min-width: 112px; padding-left: 5px; }
-  .lv-search-platform>select { font-size: 12px; }
-  .lv-search-platform>span { font-size: 10px; }
-  .lv-search-platform>svg { right: 12px; bottom: 9px; width: 13px; }
-  .lv-search-submit { width: 45px; height: 45px; }
-  .lv-search-form { padding: 7px; }
-  .lv-search-input { padding-inline: 9px; }
-  .lv-hero-visual { max-width: 100%; width: 410px; }
-  .lv-photo-stage { height: 368px; }
-  .lv-photo-one { height: 230px; width: 44%; left: 4%; }
-  .lv-photo-two { height: 204px; width: 43%; right: 2%; }
-  .lv-photo-three { height: 207px; width: 42%; right: 8%; }
-  .lv-connection-note { left: 2%; bottom: 34px; padding: 12px 14px 12px 11px; }
-  .lv-connection-note strong { font-size: 11px; }
-  .lv-connection-note small { font-size: 10px; }
-  .lv-photo-disclosure { font-size: 10px; margin-top: 20px; }
-  .lv-floating-spark { bottom: 0; left: 33%; }
-  .lv-content-sticker { left: 40%; top: -6px; font-size: 9px; }
-  .lv-content-sticker>em { font-size: 27px; }
-  .lv-photo-card>span { font-size: 8px; left: 9px; bottom: 11px; gap: 5px; }
-  .lv-photo-card>span>svg { width: 12px; height: 12px; }
-  .lv-photo-card { border-width: 5px; border-radius: 10px; }
-  .lv-section-head { align-items: flex-start; flex-direction: column; gap: 12px; }
-  .lv-section-head>.lv-link { padding-bottom: 0; font-size: 13px; }
-  .lv-section-head h2 { font-size: 28px; line-height: 1.4; }
-  .lv-mobile-break { display: block; }
-  .lv-section-head p { font-size: 13px; max-width: 330px; }
-  .lv-creator-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 17px; padding: 2px 0 14px; scrollbar-width: thin; scrollbar-color: #c3d6a2 transparent; }
-  .lv-creator-card { flex: 0 0 242px; scroll-snap-align: start; }
-  .lv-creator-image { height: 248px; }
-  .lv-creator-body { padding: 20px; }
-  .lv-creator-body h3 { font-size: 20px; min-height: 58px; }
-  .lv-creator-body>p { font-size: 12px; }
-  .lv-card-action { font-size: 12px; }
-  .lv-campaign-grid { grid-template-columns: 1fr; gap: 20px; }
-  .lv-campaign-image { height: 225px; }
-  .lv-campaign-product { height: 215px; right: 18%; }
-  .lv-coffee-title { top: 85px; left: 31px; font-size: 22px; }
-  .lv-coffee-title>em { font-size: 39px; }
-  .lv-campaign-body { padding: 23px; }
-  .lv-campaign-body h3 { font-size: 20px; min-height: 0; }
-  .lv-campaign-brand { font-size: 13px; }
-  .lv-campaign-brand>small { font-size: 10px; }
-  .lv-card-tags>span { font-size: 12px; }
-  .lv-campaign-bottom strong { font-size: 23px; }
-  .lv-campaign-bottom>div>span { font-size: 11px; }
-  .lv-card-deadline { font-size: 11px; }
-  .lv-card-deadline>svg { width: 13px; }
-  .lv-example-note { font-size: 11px; line-height: 1.9; }
-  .lv-campaign-note { align-items: start; gap: 13px; }
-  .lv-campaign-note>button { font-size: 11px; padding-top: 2px; }
-  .lv-category-tabs { gap: 7px; }
-  .lv-category-tabs>button { padding: 6px 11px; font-size: 12px; }
-  .lv-audience-grid { grid-template-columns: 1fr; gap: 20px; }
-  .lv-audience-card { padding: 31px; }
-  .lv-audience-card h2 { font-size: 28px; }
-  .lv-audience-card p { font-size: 14px; }
-  .lv-audience-card li { font-size: 13px; gap: 8px; }
-  .lv-audience-card .lv-button { font-size: 13px; min-height: 43px; padding-inline: 18px; }
-  .lv-audience-decoration { display: block; opacity: .5; }
-  .lv-audience-decoration>svg { width: 75px; height: 75px; }
-  .lv-guide-grid { grid-template-columns: 1fr; gap: 28px; max-width: 380px; margin-inline: auto; }
-  .lv-guide-grid>article { display: grid; grid-template-columns: 55px 1fr; column-gap: 18px; text-align: left; }
-  .lv-guide-grid>article>span { grid-column: 1; grid-row: 1/3; margin: 0; width: 53px; height: 53px; }
-  .lv-guide-grid>article:not(:last-child):after { display: none; }
-  .lv-guide-grid h3 { grid-column: 2; font-size: 18px; margin-top: 2px; margin-bottom: 7px; }
-  .lv-guide-grid p { grid-column: 2; font-size: 13px; max-width: 100%; margin: 0; }
-  .lv-how-heading h2 { font-size: 28px; }
-  .lv-how-heading p { font-size: 13px; max-width: 280px; margin-inline: auto; }
-  .lv-guide-switch { margin: 23px 0 30px; }
-  .lv-guide-switch>button { font-size: 12px; padding-inline: 13px; }
-  .lv-how-link { margin-top: 27px; }
-  .lv-ppl-grid { gap: 31px; }
-  .lv-ppl-copy { display: block; }
-  .lv-ppl-copy h2 { margin-top: 17px; margin-bottom: 18px; font-size: 35px; }
-  .lv-ppl-copy>p { font-size: 14px; }
-  .lv-ppl-copy ul { gap: 13px; margin-block: 23px; }
-  .lv-ppl-copy li { font-size: 12px; gap: 8px; }
-  .lv-ppl-copy li>svg { width: 17px; }
-  .lv-ppl-copy>.lv-button { min-height: 42px; font-size: 13px; padding-inline: 16px; }
-  .lv-ppl-copy>small { font-size: 11px; margin-top: 14px; }
-  .lv-ppl-copy>small>br { display: block; }
-  .lv-preview-top { padding: 8px 9px; gap: 8px; }
-  .lv-preview-top>span { font-size: 8px; gap: 4px; }
-  .lv-preview-top>span>svg { width: 12px; }
-  .lv-compare-buttons>button { font-size: 8px; padding: 4px 6px; }
-  .lv-preview-scene { aspect-ratio: 4/3; }
-  .lv-preview-product { width: 19%; left: 24%; top: 40%; }
-  .lv-preview-caption { font-size: 11px; right: 17px; bottom: 36px; }
-  .lv-preview-caption>strong { font-size: 22px; }
-  .lv-preview-badge { font-size: 8px; bottom: 10px; left: 10px; }
-  .lv-preview-track { gap: 7px; padding: 10px; min-height: 41px; font-size: 8px; }
-  .lv-preview-track>svg { width: 12px; }
-  .lv-preview-track>div { height: 14px; margin-inline: 3px; }
-  .lv-faq-grid { gap: 22px; }
-  .lv-faq-grid h2 { font-size: 28px; }
-  .lv-faq-grid>div>p { font-size: 13px; }
-  .lv-faq-list summary { font-size: 13px; gap: 18px; padding-block: 19px; }
-  .lv-faq-list details>p { font-size: 13px; padding-right: 10px; }
-  .lv-final-section { padding-block: 37px; }
-  .lv-final-section h2 { font-size: 29px; line-height: 1.4; }
-  .lv-final-section p { font-size: 13px; max-width: 260px; line-height: 1.9; }
-  .lv-final-section .lv-kicker { font-size: 8px; letter-spacing: .07em; }
-  .lv-final-section .lv-button { font-size: 12px; min-height: 40px; padding-inline: 15px; }
-  .lv-final-section .lv-container>div { gap: 9px; margin-top: 23px; }
-  .lv-final-decor { top: 43px; right: -70px; opacity: .7; }
-  .lv-final-decor>svg { width: 165px; }
-  .lv-footer-top { flex-direction: column; gap: 32px; padding-bottom: 27px; }
-  .landing-v2 .lv-footer .brand { font-size: 26px; }
-  .lv-footer-top>div>p { max-width: none; font-size: 12px; margin-top: 12px; }
-  .lv-footer-links { gap: 70px; }
-  .lv-footer-links>div { font-size: 12px; gap: 9px; }
-  .lv-footer-links strong { font-size: 13px; }
-  .lv-footer-bottom { flex-direction: column; align-items: start; gap: 6px; font-size: 10px; padding-top: 18px; }
+@media(max-width:480px) {
+  .lv-container { width:calc(100% - 36px); }
+  .lv-header-inner { min-height:70px; gap:10px; }
+  .landing-v2 .brand { font-size:25px; }
+  .landing-v2 .brand-symbol { width:29px; height:29px; }
+  .lv-header-cta { display:none; }
+  .lv-header-actions { gap:17px; }
+  .lv-hero { padding:32px 0 38px; }
+  .lv-audience-switch { margin-bottom:23px; }
+  .lv-hero-kicker { font-size:11px; }
+  .lv-hero h1 { font-size:40px; line-height:1.3; }
+  .lv-hero-description { font-size:16px; line-height:1.85; }
+  .lv-hero-description br { display:none; }
+  .lv-hero-actions { gap:19px; }
+  .lv-hero-actions>.lv-button { padding-inline:18px; }
+  .lv-hero-promise { gap:9px 12px; }
+  .lv-hero-promise>span { font-size:11px; }
+  .lv-visual-heading { font-size:11px; }
+  .lv-visual-heading>span:first-child { font-size:9px; }
+  .lv-preview-top { padding:8px; }
+  .lv-preview-top>span { font-size:12px; }
+  .landing-v2 .lv-compare-buttons>button { font-size:11px; padding:5px 8px; }
+  .lv-preview-scene { aspect-ratio:4/3; }
+  .lv-preview-caption { right:14px; bottom:42px; font-size:12px; }
+  .lv-preview-caption>strong { font-size:21px; }
+  .lv-preview-badge { font-size:10px; left:9px; }
+  .lv-preview-track { padding-inline:9px; gap:6px; }
+  .lv-product-track>div { margin-inline:8% 3%; }
+  .lv-product-note strong { font-size:13px; }
+  .lv-product-note p { font-size:11px; }
+  .lv-manifesto { padding:24px 0; }
+  .lv-manifesto .lv-kicker { font-size:11px; }
+  .lv-manifesto p { font-size:17px; }
+  .lv-mobile-break { display:initial; }
+  .lv-section h2 { font-size:28px; }
+  .lv-scene-image,.lv-campaign-image { height:225px; }
+  .lv-campaign-note { align-items:flex-start; }
+  .lv-category-tabs { gap:6px; }
+  .lv-category-tabs>button { font-size:13px; padding:6px 12px; }
+  .lv-audience-card { padding:26px; }
+  .lv-audience-card h2 { font-size:27px; }
+  .lv-audience-card li { font-size:13px; }
+  .lv-guide-switch>button { padding:8px 11px; font-size:13px; }
+  .lv-guide-grid h3 { font-size:18px; }
+  .landing-v2 .lv-preserve-section h2 { font-size:30px; }
+  .lv-final-section h2 { font-size:29px; }
+  .lv-final-section p { font-size:14px; }
+  .lv-final-section .lv-container>div { gap:9px; }
+  .lv-final-section .lv-button { padding-inline:14px; font-size:13px; }
 }
-@media(max-width:420px) {
-  .lv-container { width: calc(100% - 36px); }
-  .lv-header-inner { gap: 10px; min-height: 68px; }
-  .landing-v2 .brand { font-size: 23px; gap: 7px; }
-  .landing-v2 .brand-symbol { width: 27px; height: 27px; }
-  .lv-header-actions { gap: 12px; }
-  .lv-header-cta { display: none; }
-  .lv-login { font-size: 12px; }
-  .lv-menu { padding: 3px; }
-  .lv-hero h1 { font-size: 37px; }
-  .lv-hero-description { font-size: 13px; }
-  .lv-hero-description>br { display: none; }
-  .lv-hero-kicker { font-size: 8px; letter-spacing: .06em; }
-  .lv-audience-switch { margin-bottom: 22px; }
-  .lv-audience-switch>button { font-size: 12px; padding: 6px 12px; }
-  .lv-search-platform { min-width: 103px; padding-right: 14px; }
-  .lv-search-platform>select { font-size: 11px; }
-  .lv-search-platform>svg { right: 7px; bottom: 8px; width: 11px; }
-  .lv-search-input { padding-inline: 9px; }
-  .lv-search-input>input { font-size: 11px; }
-  .lv-search-submit { width: 42px; height: 43px; }
-  .lv-search-submit>svg { width: 19px; }
-  .lv-search-form { min-height: 66px; }
-  .lv-popular-search { gap: 6px; }
-  .lv-popular-search>span { font-size: 10px; }
-  .lv-popular-search>a { font-size: 10px; padding-inline: 5px; }
-  .lv-hero-secondary { font-size: 12px; gap: 11px; }
-  .lv-hero-bottom { margin-top: 22px; }
-  .lv-hero-bottom>span { font-size: 10px; }
-  .lv-hero-grid { gap: 27px; }
-  .lv-photo-stage { height: 340px; }
-  .lv-photo-one { height: 215px; top: 20px; }
-  .lv-photo-two { height: 190px; top: 4px; }
-  .lv-photo-three { height: 190px; bottom: 2px; }
-  .lv-connection-note { bottom: 28px; left: 1%; padding: 11px 12px 11px 9px; gap: 8px; }
-  .lv-connection-note strong { font-size: 10px; }
-  .lv-connection-note small { font-size: 9px; }
-  .lv-connection-note>span { width: 32px; height: 32px; }
-  .lv-photo-disclosure { font-size: 9px; margin-top: 19px; }
-  .lv-hero { padding-bottom: 30px; }
-  .lv-platform-strip>.lv-container>div { gap: 12px; }
-  .lv-platform-strip>.lv-container>div>span { font-size: 12px; gap: 5px; }
-  .lv-platform-strip>.lv-container>div>span>svg { width: 17px; }
-  .lv-section { padding-block: 42px; }
-  .lv-section-head h2 { font-size: 27px; }
-  .lv-section-head p { font-size: 13px; }
-  .lv-section-head>.lv-link { font-size: 12px; }
-  .lv-audience-card { padding: 27px; }
-  .lv-audience-card h2 { font-size: 27px; }
-  .lv-audience-card p { font-size: 13px; }
-  .lv-audience-card li { font-size: 12px; }
-  .lv-audience-card .lv-button { font-size: 12px; }
-  .lv-how-section { padding-top: 0; }
-  .lv-how-heading h2 { font-size: 27px; }
-  .lv-how-heading p { font-size: 12px; }
-  .lv-guide-grid h3 { font-size: 17px; }
-  .lv-guide-grid p { font-size: 12px; }
-  .lv-campaign-image { height: 212px; }
-  .lv-campaign-product { height: 200px; right: 15%; }
-  .lv-coffee-title { font-size: 21px; left: 27px; top: 80px; }
-  .lv-campaign-body { padding: 22px; }
-  .lv-campaign-body h3 { font-size: 19px; }
-  .lv-campaign-bottom strong { font-size: 22px; }
-  .lv-card-deadline { font-size: 10px; }
-}
-@media(prefers-reduced-motion:reduce) {
-  .landing-v2 *, .landing-v2 *:before, .landing-v2 *:after { scroll-behavior: auto!important; transition-duration: .01ms!important; animation-duration: .01ms!important; }
-}
-/* Keep the storefront readable at every viewport size. */
-.landing-v2 .lv-hero-description,
-.landing-v2 .lv-section-head p,
-.landing-v2 .lv-audience-card p,
-.landing-v2 .lv-how-heading p,
-.landing-v2 .lv-guide-grid p,
-.landing-v2 .lv-ppl-copy>p,
-.landing-v2 .lv-faq-grid>div>p,
-.landing-v2 .lv-faq-list details>p,
-.landing-v2 .lv-final-section p { font-size: 16px; }
-.landing-v2 .lv-section-head p { color: #6c7863; }
-.landing-v2 .lv-hero-description { color: #617156; }
-.landing-v2 .lv-creator-body>p { color: #6b795d; font-size: 13px; }
-.landing-v2 .lv-profile-category { color: #5f793e; font-size: 12px; }
-.landing-v2 .lv-card-action { color: #627650; font-size: 13px; }
-.landing-v2 .lv-example-note { font-size: 13px; color: #738263; }
-.landing-v2 .lv-photo-disclosure { font-size: 12px; color: #738263; }
-.landing-v2 .lv-image-chip { font-size: 12px; color: #657554; }
-.landing-v2 .lv-platform-chip { font-size: 12px; }
-.landing-v2 .lv-campaign-status { font-size: 12px; }
-.landing-v2 .lv-campaign-brand { font-size: 13px; color: #657754; }
-.landing-v2 .lv-campaign-brand>small { font-size: 12px; color: #788668; }
-.landing-v2 .lv-campaign-bottom>div>span { font-size: 12px; color: #768567; }
-.landing-v2 .lv-card-deadline { font-size: 12px; color: #71865a; }
-.landing-v2 .lv-card-tags>span { font-size: 12px; color: #6d8158; }
-.landing-v2 .lv-category-tabs>button { font-size: 14px; color: #697d55; }
-.landing-v2 .lv-category-tabs>button.active { color: #fff; }
-.landing-v2 .lv-guide-switch>button,
-.landing-v2 .lv-audience-switch>button { font-size: 14px; }
-.landing-v2 .lv-guide-grid p,
-.landing-v2 .lv-how-heading p { color: #708262; }
-.landing-v2 .lv-for-brand p,
-.landing-v2 .lv-for-brand li { color: #5e754d; }
-.landing-v2 .lv-audience-card li { font-size: 14px; }
-.landing-v2 .lv-faq-grid>div>p,
-.landing-v2 .lv-faq-list details>p { color: #718261; }
-.landing-v2 .lv-faq-list summary { font-size: 15px; }
-.landing-v2 .lv-final-section p { color: #66814e; }
-.landing-v2 .lv-button { font-size: 14px; }
-.landing-v2 .lv-search-input>input,
-.landing-v2 .lv-search-platform>select { font-size: 14px; }
-.landing-v2 .lv-search-input>input::placeholder { color: #7a886d; }
-.landing-v2 .lv-hero-secondary { font-size: 14px; }
-.landing-v2 .lv-popular-search>span,
-.landing-v2 .lv-popular-search>a { font-size: 12px; }
-.landing-v2 .lv-popular-search>a { color: #687d4e; }
-.landing-v2 .lv-search-platform { min-width: 133px; }
-.landing-v2 .lv-header nav { font-size: 14px; }
-.landing-v2 .lv-hero-bottom>span { font-size: 12px; color: #7f8e6d; }
-.landing-v2 .lv-ppl-copy li { font-size: 14px; }
-.landing-v2 .lv-ppl-copy>small { font-size: 12px; }
-.landing-v2 .lv-platform-strip>.lv-container>small { color: #7f8d6e; font-size: 12px; }
-@media(max-width:600px) {
-  .landing-v2 .lv-search-platform { min-width: 125px; }
-  .landing-v2 .lv-category-tabs>button { font-size: 13px; padding-inline: 11px; }
-  .landing-v2 .lv-example-note { font-size: 12px; }
-  .landing-v2 .lv-photo-disclosure { font-size: 12px; }
-  .landing-v2 .lv-hero-description { font-size: 15px; }
-  .landing-v2 .lv-audience-card li { font-size: 13px; }
-  .landing-v2 .lv-guide-grid h3 { font-size: 18px; }
-  .landing-v2 .lv-ppl-copy li { font-size: 13px; }
-  .landing-v2 .lv-for-brand p,
-  .landing-v2 .lv-for-creator p { font-size: 15px; }
-  .landing-v2 .lv-guide-grid p { font-size: 15px; }
-  .landing-v2 .lv-final-section p { font-size: 15px; }
-}
-.lv-hero-copy,.lv-hero-visual { min-width: 0; }
-@media(max-width:1000px) { .lv-hero-grid { grid-template-columns: minmax(0,1fr); } }
+@media(prefers-reduced-motion:reduce) { .landing-v2 * { transition:none!important; scroll-behavior:auto!important; } }

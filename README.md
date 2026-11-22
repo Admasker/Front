@@ -63,7 +63,7 @@ docker run --rm -p 8080:80 \
 
 ```text
 src/
-  components/Landing.tsx      서비스 랜딩
+  components/Landing.tsx      검색 중심의 서비스 랜딩
   components/Marketplace.tsx  캠페인·프로필·계정·워크스페이스
   components/Studio.tsx       영상 PPL 배치·작업 UI
   components/Brand.tsx        Admasker 브랜드
@@ -71,6 +71,7 @@ src/
   shared/types.ts            API 응답 타입과 배치값
   styles.css                 기본·스튜디오 스타일
   marketplace.css            매칭 서비스 스타일
+  landing.css                랜딩 전용 밝은 테마
   main.tsx                   경로 진입점
 public/                      이미지·폰트
 ```
@@ -88,3 +89,9 @@ API 인터페이스는 `src/lib/api.ts`, 타입은 `src/shared/types.ts`, 서버
 독립 체크아웃 타입 검사·Vite 빌드, 브랜드 가입→캠페인 등록→크리에이터 가입/프로필→지원→광고주 선정→크리에이터 결과 확인을 브라우저에서 검증합니다. 데스크톱과 모바일 경로도 확인합니다.
 
 사진은 Unsplash의 공간/모델 콘셉트 이미지입니다. morrow, STILL STUDIO, PLOT은 서비스 예시용 가상 브랜드·캠페인이며 실제 광고주나 협업을 의미하지 않습니다. Pretendard 폰트의 SIL Open Font License는 `public/fonts/OFL.txt`에 포함했습니다.
+
+## 랜딩 디자인 참고
+
+[Collabstr](https://collabstr.com/)의 검색·플랫폼 선택과 [리뷰노트](https://www.reviewnote.co.kr/)의 캠페인 탐색 구성을 참고해, Admasker 브랜드에 맞게 새로 구성했습니다. 적용 범위와 데이터 표시는 [랜딩 참고 기록](docs/landing-references.md)에 정리했습니다.
+
+첫 화면에서 광고주/크리에이터 역할을 선택하고 플랫폼·키워드로 검색할 수 있습니다. 검색어·플랫폼·카테고리는 목록 URL에 전달되어 초기 필터에 반영됩니다. 예시 프로필과 실제 API 프로필은 사진·표시를 구분하고, API 미연결 상태도 숨기지 않습니다.

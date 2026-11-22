@@ -81,7 +81,7 @@ function CreatorCard({ profile }: { profile: CreatorProfile }) {
 export default function Marketplace({ view }: { view: "campaigns" | "creators" | "workspace" }) {
   const query = new URLSearchParams(window.location.search);
   const [user, setUser] = useState<User | null>(null); const [ready, setReady] = useState(false);
-  const [q, setQ] = useState(""); const [category, setCategory] = useState(query.get("category") || "전체"); const [platform, setPlatform] = useState("전체");
+  const [q, setQ] = useState(query.get("q") || ""); const [category, setCategory] = useState(CATEGORIES.includes(query.get("category") || "") ? query.get("category")! : "전체"); const [platform, setPlatform] = useState(PLATFORMS.includes(query.get("platform") || "") ? query.get("platform")! : "전체");
   const [campaigns, setCampaigns] = useState<Campaign[]>([]); const [creators, setCreators] = useState<CreatorProfile[]>([]); const [workspace, setWorkspace] = useState<Workspace | null>(null);
   const [loading, setLoading] = useState(true); const [error, setError] = useState(""); const [version, setVersion] = useState(0);
   const [account, setAccount] = useState<UserRole | null>(null); const [createOpen, setCreateOpen] = useState(false); const [profileOpen, setProfileOpen] = useState(false); const [profile, setProfile] = useState<CreatorProfile | null>(null);
